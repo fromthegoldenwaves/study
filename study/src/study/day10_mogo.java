@@ -34,7 +34,7 @@ class Solution {
                 list.add(i+1);
             }
         }
-        answer = list.stream().mapToInt(Integer::intValue).toArray();;
+        answer = list.stream().mapToInt(Integer::intValue).toArray();
 
         return answer;
     }
