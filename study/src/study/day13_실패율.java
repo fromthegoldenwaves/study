@@ -7,7 +7,7 @@ class Solution {
         // 실패율이 높은 스테이지부터 내림차순으로 스테이지의 번호가 담겨있는 배열을 return 하도록 solution 함수를 완성하라.
         int[] answer = {};
         // 스테이지번호, 실패율
-        Map<Integer,Double> failmap = new HashMap<>();
+        Map<Integer,Double> failMap = new HashMap<>();
 
         List<Integer> list = new ArrayList();
         // i+1
@@ -40,14 +40,14 @@ class Solution {
         for(int i=0; i<N; i++) {
             double max = -1;
             int maxKey = 0;
-            for(Integer key : map.keySet()) {
-                if(max < map.get(key)) {
-                    max = map.get(key);
+            for(Integer key : failMap.keySet()) {
+                if(max < failMap.get(key)) {
+                    max = failMap.get(key);
                     maxKey = key;
                 }
             }
             answer[i] = maxKey;
-            map.remove(maxKey);
+            failMap.remove(maxKey);
         }
         return answer;
     }
