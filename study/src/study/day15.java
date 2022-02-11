@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class day15 {
     public int[] solution(String[] id_list, String[] report, int k) {
@@ -23,16 +24,22 @@ public class day15 {
             }
         }
 
-        
-        for(int i=0; i<id_list.length; i++){
-            int cnt = 0;
-            for (String str : reportSet) {
-                String[] arrStr = str.split(" ");
-                if(id_list[i].equals(arrStr[0]) && reportCnt.get(arrStr[1])>=k){
-                    cnt++;
+        // filtering
+        reportCnt = reportCnt.entrySet()
+            .stream()
+            .filter(x -> x.getValue()>= k)
+            .collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+
+        for (String str : reportSet) {
+            String[] arrStr = str.split(" ");
+            if(reportCnt.containsKey(arrStr[1])){
+                for(int i=0; i<id_list.length; i++){
+                    if(id_list[i].equals(arrStr[0])){
+                        answer[i]=answer[i]+1;
+                        break;
+                    }
                 }
             }
-            answer[i]=cnt;
         }
 
         return answer;
