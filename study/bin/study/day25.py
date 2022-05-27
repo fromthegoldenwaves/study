@@ -3,7 +3,7 @@ def solution(s):
     if len(s)%2 == 0:
         answer = s[n-1:n+1]
     else :
-        answer = s[n:n+1]
+        answer = s[n]
 
     return answer
 
