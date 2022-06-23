@@ -1,8 +1,7 @@
 def solution(a, b):
     answer = 0
-    for i in range(a,b):
+    start = b if a>b else a
+    end =  a if a>b else b
+    for i in range(start,end+1):
         answer = answer+i
-        print(i)
     return answer
-
-print(solution(3,5))
