@@ -1,6 +1,5 @@
 import re
 
-
 def solution(dartResult):
     answer = 0
     pre = 0
@@ -13,7 +12,7 @@ def solution(dartResult):
             now = now ** 3
 
         if score[2] == "*":
-            now = now *2
+            now = now * 2
             answer = answer + pre + now
         elif score[2] == "#":
             now = now * -1
